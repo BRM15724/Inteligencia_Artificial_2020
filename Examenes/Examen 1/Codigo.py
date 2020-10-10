@@ -1,3 +1,9 @@
+from math import sin #para usar la función seno
+from time import time #importamos la función time para capturar tiem
+x = list(range(0,100)) #vector de valores desde 0 a 99
+y = [0.0 for i in range(len(x))] #inicializamos el vector de resultados con 100 valores 0.0
+ 
+tiempo_inicial = time() 
 
 mapa = {   #ESTE MAPA ME INDICA LOS ESTADOS VECINOS
   19 : [8,24,28],
@@ -168,3 +174,9 @@ cont=1
 #print(mapa[estado])
 #Recorrido_Mapa ORREMOS EL MAPA DESDE EL ESTADO DE LA REPUBLICA INDICADO CON ENTERIORIDAD
 Recorrido_Mapa (visitados, mapa, estado , colores_de_estado , cont,color , estado_republica)
+
+tiempo_final = time() 
+ 
+tiempo_ejecucion = tiempo_final - tiempo_inicial
+ 
+print ('El tiempo de ejecucion fue:',tiempo_ejecucion) #En segundos
