@@ -1,9 +1,6 @@
 from math import sin #para usar la función seno
 from time import time #importamos la función time para capturar tiem
-x = list(range(0,100)) #vector de valores desde 0 a 99
-y = [0.0 for i in range(len(x))] #inicializamos el vector de resultados con 100 valores 0.0
- 
-tiempo_inicial = time() 
+
 
 mapa = {   #ESTE MAPA ME INDICA LOS ESTADOS VECINOS
   19 : [8,24,28],
@@ -41,90 +38,90 @@ mapa = {   #ESTE MAPA ME INDICA LOS ESTADOS VECINOS
 }
 
 estado_republica = {  #ESTA BIBLIOTECA ME INDICA EL ESTADO Y EL COLOR DEL QUE ESTA PINTADO, COLORES: 0 - BLANCO , 1 - ROJO , 2 - AMARILLO , 3 - VERDE, 4 - AZUL , 5- MORADO
-1 : [ "Aguascalientes"] ,
-2 : [ "Baja Califor"],
-3 : [ "Baja California Sur"],
-4 :[ "Campeche"],
-5 :[ "Chiapas"],
-6 :[ "Chihuahua"],
-7 :[ "Ciudad de México"],
-8 :[ "Coahuila"],
-9 :[ "Colima"],
-10:[ "Durango"],
-11 :[ "Estado de México"],
-12 :[ "Guanajuato"],
-13 :[ "Guerrero"],
-14 :[ "Hidalgo"],
-15 :[ "Jalisco"],
-16 :[ "Michoacán"],
-17 :[ "Morelos"],
-18 :[ "Nayarit"],
-19 :[ "Nuevo León"],
-20 :[ "Oaxaca"],
-21 :[ "Puebla"],
-22 :[ "Querétaro"],
-23 :[ "Quintana Roo"],
-24 :[ "San Luis Potosí"],
-25 :[ "Sinaloa"],
-26 :[ "Sonora"],
-27 :[ "Tabasco"],
-28 :[ "Tamaulipas"],
-29 :[ "Tlaxcala"],
-30 :[ "Veracruz"],
-31 :[ "Yucatán"],
-32 :[ "Zacatecas"]
+  1 : [ "Aguascalientes"] ,
+  2 : [ "Baja Califor"],
+  3 : [ "Baja California Sur"],
+  4 : [ "Campeche"],
+  5 : [ "Chiapas"],
+  6 : [ "Chihuahua"],
+  7 : [ "Ciudad de México"],
+  8 : [ "Coahuila"],
+  9 : [ "Colima"],
+  10 : [ "Durango"],
+  11 : [ "Estado de México"],
+  12 : [ "Guanajuato"],
+  13 : [ "Guerrero"],
+  14 : [ "Hidalgo"],
+  15 : [ "Jalisco"],
+  16 : [ "Michoacán"],
+  17 : [ "Morelos"],
+  18 : [ "Nayarit"],
+  19 : [ "Nuevo León"],
+  20 : [ "Oaxaca"],
+  21 : [ "Puebla"],
+  22 : [ "Querétaro"],
+  23 : [ "Quintana Roo"],
+  24 : [ "San Luis Potosí"],
+  25 : [ "Sinaloa"],
+  26 : [ "Sonora"],
+  27 : [ "Tabasco"],
+  28 : [ "Tamaulipas"],
+  29 : [ "Tlaxcala"],
+  30 : [ "Veracruz"],
+  31 : [ "Yucatán"],
+  32 : [ "Zacatecas"]
 }
 
 colores_de_estado = {  #ESTA BIBLIOTECA ME INDICA EL ESTADO Y EL COLOR DEL QUE ESTA PINTADO, COLORES: 0 - BLANCO , 1 - ROJO , 2 - AMARILLO , 3 - VERDE, 4 - AZUL , 5- MORADO
-1 : 0 ,
-2 : 0,
-3 : 0,
-4 :0,
-5 :0,
-6 :0,
-7 :0,
-8 :0,
-9 :0,
-10:0,
-11 :0,
-12 :0,
-13 :0,
-14 :0,
-15 :0,
-16 :0,
-17 :0,
-18 :0,
-19 :0,
-20 :0,
-21 :0,
-22 :0,
-23 :0,
-24 :0,
-25 :0,
-26 :0,
-27 :0,
-28 :0,
-29 :0,
-30 :0,
-31 :0,
-32 :0
+  1 : 0,
+  2 : 0,
+  3 : 0,
+  4 : 0,
+  5 : 0,
+  6 : 0,
+  7 : 0,
+  8 : 0,
+  9 : 0,
+  10 : 0,
+  11 : 0,
+  12 : 0,
+  13 : 0,
+  14 : 0,
+  15 : 0,
+  16 : 0,
+  17 : 0,
+  18 : 0,
+  19 : 0,
+  20 : 0,
+  21 : 0,
+  22 : 0,
+  23 : 0,
+  24 : 0,
+  25 : 0,
+  26 : 0,
+  27 : 0,
+  28 : 0,
+  29 : 0,
+  30 : 0,
+  31 : 0,
+  32 : 0
 }
 
-color = {
+color = { #ESTA BIBLIOTECA CONTIENE LOS NOMBRES CORRESPONDIENTES A CADA NUMERO DE COLOR
+
   0 : ["Blanco"],
   1 : ["Rojo"],
   2 : ["Amarillo"],
   3 : ["Verde"],
   4 : ["Azul"],
-  5 : ["Morado"],
-
+  5 : ["Morado"]
 }
 
-visitados = set() #AQUI SE ALMACENAN LOS ESTADOS DE LA REPUBLICA VISITADOS
 
 def Pintar_Estado(estado , mapa , colores_de_estado , cont , color , estado_republica):
   colores_alrededor=set() #AQUI ALMACENO LOS COLORES QUE ESTAN ALREDEDOR DE UN ESTADO DE LA REPUBLICA
   estado=(int)(estado)
+
   for vecinos in mapa[estado]:
     #PARA CADA VECINO AGREGO SU COLOR A UNA LISTA
     colores_alrededor.add(colores_de_estado[vecinos])
@@ -139,15 +136,12 @@ def Pintar_Estado(estado , mapa , colores_de_estado , cont , color , estado_repu
   return colores_de_estado
 
 
-
-
+visitados = set() #AQUI SE ALMACENAN LOS ESTADOS DE LA REPUBLICA VISITADOS
 
 #DEFINIMOS ESTA FUNCION PARA Recorrido_Mapa ORRER EL MAPA DE LA REPUBLICA
 def Recorrido_Mapa (visitados, mapa, estado , colores_de_estado,cont,color , estado_republica):
     
     if estado not in visitados: #CONDICION DEESTADO REALIZAMOS LO SIGUIENTE
-        #Imprimimos este nodo no visitado
-        #print (estado, end = " ")
         
         visitados.add(estado) #AGREGAMOS EL ESTADO ACTUAL VISITADO A LA LISTA DE ESTADOS VISITADOS
 
@@ -158,25 +152,33 @@ def Recorrido_Mapa (visitados, mapa, estado , colores_de_estado,cont,color , est
             Recorrido_Mapa (visitados, mapa, vecinos , colores_de_estado,cont,color , estado_republica)
 
 
-
-#MOSTRAMOS EL MAPA
-print("\nGrafo del mapa de México: \n")
+# IMPRIMO EL GRAFO DE LA REPUBLICA MEXICANA
+print("\nGRAFO DEL MAPA DE LA REPUBLICA: \n")
 for llave, lista in mapa.items():
   print(llave, " -> ", lista)
 
-#PIDO UN NODO DE INICIO (PARA POBAR EL Recorrido_Mapa ORRIDO)
-estado = input("\n\nElija un nodo de partida: ")
-print("\n\nRecorrido_Mapa orrido: \n")
+# IMPRIMO LA BIBLIOTECA DE ESTADOS CON SU RESPECTIVO NUMERO DE ESTADO
+print("\nBIBLIOTECTA DE ESTADOS DE LA REPUBLICA: \n")
+for llave, estadoX in estado_republica.items():
+  print(llave, " -> ", estadoX)
+
+#PIDO UN NODO DE INICIO
+estado = input("\n\nElija un número de estado de partida: ")
 estado=(int)(estado)
-cont=1
-#colores_de_estado[1]=5
-#print(colores_de_estado[1]*2)
-#print(mapa[estado])
-#Recorrido_Mapa ORREMOS EL MAPA DESDE EL ESTADO DE LA REPUBLICA INDICADO CON ENTERIORIDAD
+cont=0
+
+# ANTES DE MANDAR A LLAMAR A LA FUNCION QUE RECORRE EL MAPA TOMO EL TIEMPO ACTUAL
+x = list(range(0,100)) #vector de valores desde 0 a 99
+y = [0.0 for i in range(len(x))] #inicializamos el vector de resultados con 100 valores 0.0
+tiempo_inicial = time() 
+
+# RECORREMOS EL MAPA DESDE EL ESTADO DE LA REPUBLICA INDICADO CON ENTERIORIDAD PARA IRLO PINTANDO
 Recorrido_Mapa (visitados, mapa, estado , colores_de_estado , cont,color , estado_republica)
 
+# OBTENGO EL TIEMPO DESPUES DE TERMINAR LA EJECUCION DE LA FUNCION DEL ALGORITMO
 tiempo_final = time() 
  
+# CALCULO EL TIEMPO DE EJECUCION 
 tiempo_ejecucion = tiempo_final - tiempo_inicial
  
-print ('El tiempo de ejecucion fue:',tiempo_ejecucion) #En segundos
+print ('EL TIEMPO DE EJECUCION FUE:',tiempo_ejecucion) #En segundos
