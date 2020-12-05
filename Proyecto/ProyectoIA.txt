@@ -32,7 +32,7 @@ class Pen3(turtle.Turtle):
 class Pen4(turtle.Turtle):
     def __init__(self):
         turtle.Turtle.__init__(self)
-        self.shape("square")
+        self.shape("circle")
         self.color("green")
         self.penup()
         self.speed(0)
@@ -44,6 +44,7 @@ class Pen5(turtle.Turtle):
         self.color("red")
         self.penup()
         self.speed(0)
+
 
 niveles = []
 
@@ -108,7 +109,7 @@ nivel_1 = [
 nivel_2 = [
     "ZZZZZZZZZZZZZZZZZZZZZZZZZ",
     "ZXXXXXXXXXXXXXXXXXXXXXXXZ",
-    "ZXA_________X______B___XZ",
+    "ZX A _ _ ___X_____ B __XZ",
     "ZX__________X__________XZ",
     "ZX__________X__________XZ",
     "ZX____B_____X__________XZ",
@@ -273,7 +274,7 @@ nivel_7 = [
     "ZZZZZZZZZZZZZZZZZZZZZZZZZ",
 ]
 
-
+# INSTANCIAS
 niveles.append(nivel_0)
 niveles.append(nivel_1)
 niveles.append(nivel_2)
@@ -284,6 +285,7 @@ niveles.append(nivel_6)
 niveles.append(nivel_7)
 
 def iniciar_lab(nivel):
+    count=0
     for fila in range(len(nivel)):
         for column in range(len(nivel[fila])):
 
@@ -310,6 +312,23 @@ def iniciar_lab(nivel):
             if letra_x == "B":
                 pen5.goto(screen_x , screen_y)
                 pen5.stamp()
+                count = count + 1
+    if count == 0:
+        return True
+    else:
+        return False
+    
+def mover_aspiradora(nivel , x , y):
+    if nivel[x][y+1] == "_":
+        print ("Avanzar")
+        # comvierto string en list
+        nivel[x].replace('A','B',1)
+        print(nivel[x])
+
+        y = y + 1
+    return nivel , x , y
+
+
 
 pen1 = Pen1()
 pen2 = Pen2()
@@ -317,7 +336,20 @@ pen3 = Pen3()
 pen4 = Pen4()
 pen5 = Pen5()
 
-iniciar_lab(niveles[7])
+pasos = 0
+x = 2
+y = 2
+
+limpio=iniciar_lab(niveles[2])
+
+while True :
+    pasos=pasos + 1
+    niveles[2] , x , y = mover_aspiradora(niveles[2] , x , y)
+    limpio=iniciar_lab(niveles[2])
+    print(pasos,"\n")
+    print(x,"\n",y)
+    if pasos == 20:
+        break
 
 turtle.done()
 turtle.bye()

@@ -32,7 +32,7 @@ def mutate_solution(solution):
 
 # ESTABLECEMOS LA CADENA DE INICIO
 #best = generate_random_solution()
-best = "54321";
+best = input("Introduce una cadena de numeros solo valores del 1 al 5: ")
 best_score = evaluate(best) 
 
 
